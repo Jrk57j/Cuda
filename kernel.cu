@@ -12,6 +12,7 @@ using namespace std;
 
 
 cudaError_t transposeMatrix(int (&matrix_a)[N][M], int (&t_pose)[N][M]);
+cudaError_t multiplication(int(&matrix_a)[N][M], int(&matrix_b)[N][M], int(&matrix_c)[N][M]);
 
 __global__ void transposeKernal(int *matrix_a, int *transpose) {
 	int i = threadIdx.x;
@@ -19,6 +20,10 @@ __global__ void transposeKernal(int *matrix_a, int *transpose) {
 	int j = blockIdx.x;
 
 	transpose[x * j + i] = matrix_a[x * i + j];
+}
+
+__global__ void multiplicationKernel(int *matrix_a, int *matrix_b, int *matrix_c) {
+
 }
 
 
